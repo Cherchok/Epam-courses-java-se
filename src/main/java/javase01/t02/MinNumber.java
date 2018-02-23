@@ -1,0 +1,24 @@
+package javase01.t02;
+
+public class MinNumber {
+
+    public int findMin(double eps){
+       int n=0;
+       double a;
+
+       if(eps==1) return 0;
+
+       if(eps >1){
+           System.out.println("No such a number!!!");
+           return -1;
+       }
+
+       do {
+           n++;
+           a = 1 / (Math.pow((n+1),2));
+           System.out.println("a[" + n + "] = " + a );
+       }while (a >= eps);
+
+        return n ;
+    }
+}

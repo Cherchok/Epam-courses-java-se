@@ -1,0 +1,60 @@
+package javase01.t02;
+
+public class MinNumber {
+
+    public int findMin(double eps){
+       int n=0;
+       double a;
+
+       if(eps==1) return 0;
+
+       if(eps >1){
+           System.out.println("No such a number!!!");
+           return -1;
+       }
+
+       do {
+           n++;
+           a = 1 / (Math.pow((n+1),2));
+           System.out.println("a[" + n + "] = " + a );
+       }while (a >= eps);
+
+        return n ;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+package javase01.t02;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        MinNumber mn = new MinNumber();
+        System.out.println( "Min number is: " + mn.findMin(0.003));
+
+    }
+}
+
+
+// result of Main  run:
+a[1] = 0.25
+a[2] = 0.1111111111111111
+a[3] = 0.0625
+a[4] = 0.04
+a[5] = 0.027777777777777776
+a[6] = 0.02040816326530612
+a[7] = 0.015625
+a[8] = 0.012345679012345678
+a[9] = 0.01
+a[10] = 0.008264462809917356
+a[11] = 0.006944444444444444
+a[12] = 0.005917159763313609
+a[13] = 0.00510204081632653
+a[14] = 0.0044444444444444444
+a[15] = 0.00390625
+a[16] = 0.0034602076124567475
+a[17] = 0.0030864197530864196
+a[18] = 0.002770083102493075
+Min number is: 18
