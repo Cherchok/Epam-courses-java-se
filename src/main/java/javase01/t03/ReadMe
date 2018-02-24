@@ -1,0 +1,48 @@
+package javase01.t03;
+
+public class Ffunction {
+
+    public void Ffunk(double a, double b, double step){
+        double f;
+
+        for (double x = a; x <= b ; x+=step) {
+
+            f = Math.tan(2*x) -3;
+            System.out.println("x = " + x + " F(x) = "+f);
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////
+
+package javase01.t03;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Ffunction ffunction = new Ffunction();
+
+        ffunction.Ffunk(0.5 ,5.5,0.5);
+
+    }
+
+}
+
+//////////////////////////////////////////////////////////////////
+
+// run Main
+
+x = 0.5 F(x) = -1.4425922753450977
+x = 1.0 F(x) = -5.185039863261519
+x = 1.5 F(x) = -3.142546543074278
+x = 2.0 F(x) = -1.8421787176504225
+x = 2.5 F(x) = -6.380515006246586
+x = 3.0 F(x) = -3.2910061913847493
+x = 3.5 F(x) = -2.1285520172756813
+x = 4.0 F(x) = -9.799711455220379
+x = 4.5 F(x) = -3.45231565944181
+x = 5.0 F(x) = -2.3516391725409136
+x = 5.5 F(x) = -228.95084645419513
+
+Process finished with exit code 0
