@@ -1,0 +1,75 @@
+package javase01.t04;
+
+import java.util.Scanner;
+
+public class ArraysElements {
+
+    public double maxSumOfTwo(int numbOfEl) {
+
+        double[] array = new double[numbOfEl];
+
+        if (array.length % 2 != 0) {
+            array = new double[numbOfEl + 1];
+        }
+
+        if (array.length == 0) {
+            array = new double[numbOfEl + 2];
+        }
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Fill the Array:");
+
+        for (int i = 0; i < array.length; i++) {
+            array[i] = sc.nextDouble();
+
+            System.out.println("array[" + i + "]= " + array[i]);
+        }
+
+        double max = array[0] + array[1];
+
+        for (int i = 0; i <= array.length - 1; i += 2) {
+
+            double temp = array[i] + array[i + 1];
+
+            if (max < temp) {
+                max = temp;
+            }
+        }
+        return max;
+    }
+}
+
+///////////////////////////////////////////////////////////////////
+
+package javase01.t04;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        ArraysElements ae = new ArraysElements();
+
+        System.out.println("max = " + ae.maxSumOfTwo(5));
+    }
+}
+
+///////////////////////////////////////////////////////////////////
+
+// run Main
+
+Fill the Array:
+2
+array[0]= 2.0
+4
+array[1]= 4.0
+7
+array[2]= 7.0
+9
+array[3]= 9.0
+0
+array[4]= 0.0
+-2
+array[5]= -2.0
+max = 16.0
+
+Process finished with exit code 0
