@@ -1,0 +1,202 @@
+package javase01.t06;
+
+/**
+ * A simple class for making some notes with <b>note</b> property.
+ *
+ * @author Viktor Yurzanov
+ * @since 1.0
+ */
+
+public class Note {
+    private String note;
+
+    /**
+     * Constructor for creating new object with param.
+     *
+     * @param note - some record
+     * @see Note#Note(String)
+     */
+    Note(String note) {
+        this.note = note;
+    }
+
+    /**
+     * Method for creating new record {@Link Note#note }
+     *
+     * @param note - new record
+     */
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    /**
+     * Returns {@Link Note#note }
+     *
+     * @return current note
+     */
+    public String getNote() {
+        return note;
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+package javase01.t06;
+
+/**
+ * This class is array, which consist of <b>Note</b> Objects.
+ *
+ * @author Viktor Yurzanov
+ * @since 1.0
+ */
+public class Notebook {
+
+    /**
+     * Property for calculating number of notes in <b>notebook</b>
+     */
+    private int numberOfNotes;
+
+    /**
+     * This property is array, consisted of <b>Note</b> types data
+     */
+    private Note[] notebook;
+
+    /**
+     * Constructor with params
+     *
+     * @param size transfer the size of <>notebook</> at the time of initialization
+     */
+    Notebook(int size) {
+        notebook = new Note[size];
+    }
+
+    /**
+     * The method for adding <>note</> to <>notebook</>
+     *
+     * @param note new <>note</>
+     */
+    public void addNote(String note) {
+        spaceCheck();
+        notebook[numberOfNotes++] = new Note(note);
+    }
+
+    /**
+     * The method removes <b>note</b> by index then decrease <b>notebook</b> by 1 position
+     *
+     * @param index index of deleting <b>note</b>
+     */
+    public void deleteNote(int index) {
+        System.arraycopy(notebook, index + 1, notebook, index, notebook.length - 1 - index);
+        Note[] decreaseNote = new Note[notebook.length - 1];
+        System.arraycopy(notebook, 0, decreaseNote, 0, notebook.length - 1);
+        notebook = decreaseNote;
+        numberOfNotes--;
+    }
+
+    /**
+     * The method for rewrite current <b>note</b> by index
+     *
+     * @param index the index of <b>note</b> which need to rewrite
+     * @param note  rewritable note
+     */
+    public void editNote(int index, String note) {
+        notebook[index].setNote(note);
+    }
+
+    /**
+     * The method displays in console all <b>note</b> of <b>notebook</b>
+     */
+    public void displayAllNotes() {
+        for (Note note : notebook) {
+            if (note != null) {
+                String st = note.getNote();
+                System.out.println(st);
+            }
+        }
+    }
+
+    /**
+     * This method checks the capacity of array <b>notebook</b>. If array filled, the method rewrite and
+     * increase <b>notebook</b> by 1 position
+     */
+    private void spaceCheck() {
+        if (numberOfNotes >= notebook.length) {
+            Note[] biggerNotebook = new Note[notebook.length + 1];
+            System.arraycopy(notebook, 0, biggerNotebook, 0, notebook.length);
+            notebook = biggerNotebook;
+        }
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+package javase01.t06;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Notebook notebook = new Notebook(3);
+
+        System.out.println("Добавление записей: ");
+        notebook.addNote("Ivan");
+        notebook.addNote("Egor");
+        notebook.addNote("Vasily");
+        notebook.addNote("Oleg");
+        notebook.addNote("Viktor");
+        notebook.addNote("Peter");
+        notebook.displayAllNotes();
+
+        System.out.println();
+        System.out.println("Редовкируем запись под индексом [1], заменяем Egor на  Valentin: ");
+        notebook.editNote(1, "Valentin");
+        notebook.displayAllNotes();
+
+        System.out.println();
+        System.out.println("Удаляем запись под индексом [2]:");
+        notebook.deleteNote(2);
+        notebook.displayAllNotes();
+
+        System.out.println();
+        System.out.println("Добавляем новую запись в конец списка: ");
+        notebook.addNote("Max");
+        notebook.displayAllNotes();
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+// run Main
+
+Добавление записей:
+Ivan
+Egor
+Vasily
+Oleg
+Viktor
+Peter
+
+Редовкируем запись под индексом [1], заменяем Egor на  Valentin:
+Ivan
+Valentin
+Vasily
+Oleg
+Viktor
+Peter
+
+Удаляем запись под индексом [2]:
+Ivan
+Valentin
+Oleg
+Viktor
+Peter
+
+Добавляем новую запись в конец списка:
+Ivan
+Valentin
+Oleg
+Viktor
+Peter
+Max
+
+Process finished with exit code 0
