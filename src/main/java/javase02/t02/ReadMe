@@ -1,0 +1,116 @@
+package javase02.t02;
+
+import java.util.ArrayList;
+
+public class ChancerySeller {
+    private String name;
+    private ArrayList<String> chancery;
+
+    public ChancerySeller(String name) {
+        this.name = name;
+        chancery = new ArrayList<>();
+    }
+
+    public void setItem(String item) {
+        chancery.add(item);
+    }
+
+    private double getPrice(String item) {
+        double price;
+        switch (item) {
+            case "Pen":
+                price = 20.50;
+                break;
+            case "Pencil":
+                price = 15.60;
+                break;
+            case "Sticks":
+                price = 37.20;
+                break;
+            case "Notebook":
+                price = 70.0;
+                break;
+            case "Paints":
+                price = 108.0;
+                break;
+            case "Eraser":
+                price = 13.50;
+                break;
+            default:
+                price = 0;
+                System.out.println(name + "!!! The item " + item + " is not found");
+        }
+        return price;
+    }
+
+    public void showSellerItems() {
+        System.out.println(name+" sold next items: ");
+        int number=0;
+        for (String item : chancery) {
+            ++number;
+            System.out.println(number+". "+item);
+        }
+    }
+
+    public void countItemPrice() {
+        double totalPrice = 0;
+        for (String item : chancery) {
+            totalPrice += getPrice(item);
+        }
+        System.out.print(name + " sold the items for: " + totalPrice + " rubles");
+        System.out.println();
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+package javase02.t02;
+
+public class Main {
+    public static void main(String[] args) {
+
+        ChancerySeller seller1 = new ChancerySeller("Ivan");
+        ChancerySeller seller2 = new ChancerySeller("Petr");
+
+        seller1.setItem("Pen");
+        seller1.setItem("Pencil");
+        seller1.setItem("Sticks");
+        seller1.setItem("Notebook");
+        seller1.setItem("Paints");
+        seller1.setItem("Eraser");
+        seller1.countItemPrice();
+        seller1.showSellerItems();
+
+        System.out.println();
+
+        seller2.setItem("Pen");
+        seller2.setItem("Pen");
+        seller2.setItem("Pen");
+        seller2.setItem("Pen");
+        seller2.setItem("Pen");
+        seller2.setItem("Pork");
+        seller2.countItemPrice();
+
+
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+// Main run
+
+Ivan sold the items for: 264.8 rubles
+Ivan sold next items:
+1. Pen
+2. Pencil
+3. Sticks
+4. Notebook
+5. Paints
+6. Eraser
+
+Petr!!! The item Pork is not found
+Petr sold the items for: 102.5 rubles
+
+Process finished with exit code 0
+
+///////////////////////////////////////////////////////////////////////////////////////////////
