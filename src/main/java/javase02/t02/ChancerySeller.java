@@ -44,11 +44,11 @@ public class ChancerySeller {
     }
 
     public void showSellerItems() {
-        System.out.println(name+" sold next items: ");
-        int number=0;
+        System.out.println(name + " sold next items: ");
+        int number = 0;
         for (String item : chancery) {
             ++number;
-            System.out.println(number+". "+item);
+            System.out.println(number + ". " + item);
         }
     }
 
