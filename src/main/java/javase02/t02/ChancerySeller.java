@@ -52,12 +52,13 @@ public class ChancerySeller {
         }
     }
 
-    public void countItemPrice() {
+    public double countItemPrice() {
         double totalPrice = 0;
         for (String item : chancery) {
             totalPrice += getPrice(item);
         }
         System.out.print(name + " sold the items for: " + totalPrice + " rubles");
         System.out.println();
+        return totalPrice;
     }
 }
