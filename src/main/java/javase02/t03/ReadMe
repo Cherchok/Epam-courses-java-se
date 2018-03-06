@@ -36,7 +36,10 @@ public abstract class Chancery {
 
     public abstract double price();
 
-
+    @Override
+    public String toString() {
+        return getItemName()+"-"+price();
+    }
 }
 
 ///////////////////////////////////////////////////////////////
@@ -45,15 +48,13 @@ package javase02.t03;
 
 public class Pen extends Chancery {
 
-    private String item;
-    private String brandName;
     private int count;
     private double price;
 
-    public Pen(String item, String brandName) {
-        this.item = item;
-        this.brandName = brandName;
-        price = getPrice(item);
+
+    public Pen(int count) {
+        this.count = count;
+        price = getPrice(getItemName());
     }
 
 
@@ -61,11 +62,9 @@ public class Pen extends Chancery {
         count++;
     }
 
-
-
     @Override
     public String getItemName() {
-        return this.item;
+        return "Pen";
     }
 
     @Override
@@ -75,22 +74,34 @@ public class Pen extends Chancery {
 
     @Override
     public String getBrandName() {
-        return this.brandName;
+        return "Star";
     }
 
     @Override
     public double price() {
         return price * count;
     }
+
 }
 
 ///////////////////////////////////////////////////////////////
 
 package javase02.t03;
 
-public class Pencil extends Pen{
-    public Pencil(String item, String brandName) {
-        super(item, brandName);
+public class Pencil extends Pen {
+
+    public Pencil(int count) {
+        super(count);
+    }
+
+    @Override
+    public String getItemName() {
+        return "Pencil";
+    }
+
+    @Override
+    public String getBrandName() {
+        return "Mine";
     }
 }
 
@@ -99,8 +110,19 @@ public class Pencil extends Pen{
 package javase02.t03;
 
 public class Eraser extends Pen {
-    public Eraser(String item, String brandName) {
-        super(item, brandName);
+
+    public Eraser(int count) {
+        super(count);
+    }
+
+    @Override
+    public String getItemName() {
+        return "Eraser";
+    }
+
+    @Override
+    public String getBrandName() {
+        return "Shadow";
     }
 }
 
@@ -109,8 +131,19 @@ public class Eraser extends Pen {
 package javase02.t03;
 
 public class Notebook extends Pen {
-    public Notebook(String item, String brandName) {
-        super(item, brandName);
+
+    public Notebook(int count) {
+        super(count);
+    }
+
+    @Override
+    public String getItemName() {
+        return "Notebook";
+    }
+
+    @Override
+    public String getBrandName() {
+        return "CopyPaper";
     }
 }
 
@@ -119,40 +152,39 @@ public class Notebook extends Pen {
 package javase02.t03;
 
 public class Paints extends Pen {
-    public Paints(String item, String brandName) {
-        super(item, brandName);
+
+    public Paints(int count) {
+        super(count);
+    }
+
+    @Override
+    public String getItemName() {
+        return "Paints";
+    }
+
+    @Override
+    public String getBrandName() {
+        return "Rainbow";
     }
 }
 
 ///////////////////////////////////////////////////////////////
 
 
+package javase02.t03;
+
 import java.util.ArrayList;
 
 public class ChanceryKit {
 
-    public ArrayList<Chancery> startKit() {
+    public static ArrayList<Chancery> startKit() {
         ArrayList<Chancery> beginnerKit = new ArrayList<>();
 
-        Pen pen = new Pen("Pen", "Rainbow");
-        pen.addItem();
-        pen.addItem();
-        pen.addItem();
-
-        Pencil pencil = new Pencil("Pencil", "Darkness");
-        pencil.addItem();
-        pencil.addItem();
-        pencil.addItem();
-        pencil.addItem();
-
-        Eraser eraser = new Eraser("Eraser", "Shadow");
-        eraser.addItem();
-
-        Notebook notebook = new Notebook("Notebook", "Nature");
-        notebook.addItem();
-
-        Paints paints = new Paints("Paints", "Sunset");
-        paints.addItem();
+        Pen pen = new Pen(10);
+        Pencil pencil = new Pencil(11);
+        Eraser eraser = new Eraser(2);
+        Notebook notebook = new Notebook(1);
+        Paints paints = new Paints(1);
 
         beginnerKit.add(pen);
         beginnerKit.add(pencil);
@@ -175,7 +207,7 @@ public class ChanceryKit {
         int number = 0;
         for (Chancery items : startKit()) {
             number++;
-            System.out.println(number + ". " + items.getItemName() + " \"" + items.getBrandName() +"\" "
+            System.out.println(number + ". " + items.getItemName() + " \"" + items.getBrandName() + "\" "
                     + " - " + items.Sum());
         }
     }
@@ -200,12 +232,12 @@ public class Main {
 
 // Main run:
 
-1. Pen "Rainbow"  - 3
-2. Pencil "Darkness"  - 4
-3. Eraser "Shadow"  - 1
-4. Notebook "Nature"  - 1
-5. Paints "Sunset"  - 1
+1. Pen "Star"  - 10
+2. Pencil "Mine"  - 11
+3. Eraser "Shadow"  - 2
+4. Notebook "CopyPaper"  - 1
+5. Paints "Rainbow"  - 1
 
-Total price: 315.4$
+Total price: 581.6$
 
 Process finished with exit code 0

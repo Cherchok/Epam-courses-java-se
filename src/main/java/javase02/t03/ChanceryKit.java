@@ -4,28 +4,14 @@ import java.util.ArrayList;
 
 public class ChanceryKit {
 
-    private ArrayList<Chancery> startKit() {
+    public static ArrayList<Chancery> startKit() {
         ArrayList<Chancery> beginnerKit = new ArrayList<>();
 
-        Pen pen = new Pen("Pen", "Rainbow");
-        pen.addItem();
-        pen.addItem();
-        pen.addItem();
-
-        Pencil pencil = new Pencil("Pencil", "Darkness");
-        pencil.addItem();
-        pencil.addItem();
-        pencil.addItem();
-        pencil.addItem();
-
-        Eraser eraser = new Eraser("Eraser", "Shadow");
-        eraser.addItem();
-
-        Notebook notebook = new Notebook("Notebook", "Nature");
-        notebook.addItem();
-
-        Paints paints = new Paints("Paints", "Sunset");
-        paints.addItem();
+        Pen pen = new Pen(10);
+        Pencil pencil = new Pencil(11);
+        Eraser eraser = new Eraser(2);
+        Notebook notebook = new Notebook(1);
+        Paints paints = new Paints(1);
 
         beginnerKit.add(pen);
         beginnerKit.add(pencil);

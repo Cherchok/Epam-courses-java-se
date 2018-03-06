@@ -2,15 +2,13 @@ package javase02.t03;
 
 public class Pen extends Chancery {
 
-    private String item;
-    private String brandName;
     private int count;
     private double price;
 
-    public Pen(String item, String brandName) {
-        this.item = item;
-        this.brandName = brandName;
-        price = getPrice(item);
+
+    public Pen(int count) {
+        this.count = count;
+        price = getPrice(getItemName());
     }
 
 
@@ -20,7 +18,7 @@ public class Pen extends Chancery {
 
     @Override
     public String getItemName() {
-        return this.item;
+        return "Pen";
     }
 
     @Override
@@ -30,11 +28,12 @@ public class Pen extends Chancery {
 
     @Override
     public String getBrandName() {
-        return this.brandName;
+        return "Star";
     }
 
     @Override
     public double price() {
         return price * count;
     }
+
 }

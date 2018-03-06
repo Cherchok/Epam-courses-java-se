@@ -36,5 +36,8 @@ public abstract class Chancery {
 
     public abstract double price();
 
-
+    @Override
+    public String toString() {
+        return getItemName()+"-"+price();
+    }
 }

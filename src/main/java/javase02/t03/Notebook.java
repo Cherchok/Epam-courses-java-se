@@ -1,7 +1,18 @@
 package javase02.t03;
 
 public class Notebook extends Pen {
-    public Notebook(String item, String brandName) {
-        super(item, brandName);
+
+    public Notebook(int count) {
+        super(count);
+    }
+
+    @Override
+    public String getItemName() {
+        return "Notebook";
+    }
+
+    @Override
+    public String getBrandName() {
+        return "CopyPaper";
     }
 }
