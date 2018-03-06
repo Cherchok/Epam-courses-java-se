@@ -21,7 +21,7 @@ public class Note {
     }
 
     /**
-     * Method for creating new record {@Link Note#note }
+     * Method for creating new record { @Link Note#note }
      *
      * @param note - new record
      */
@@ -30,7 +30,7 @@ public class Note {
     }
 
     /**
-     * Returns {@Link Note#note }
+     * Returns { @Link Note#note }
      *
      * @return current note
      */
