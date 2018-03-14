@@ -11,6 +11,8 @@ public class Group {
     private Subjects subject;
     private Map<Student, Mark> marks;
 
+
+    @SuppressWarnings("WeakerAccess")
     public Group(Subjects subject) {
         this.subject = subject;
         students = new LinkedHashSet<>();

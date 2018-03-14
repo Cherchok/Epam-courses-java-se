@@ -6,6 +6,7 @@ import java.util.Set;
 public class University {
     private Set<Group> groups;
 
+    @SuppressWarnings("WeakerAccess")
     public University() {
         groups = new LinkedHashSet<>();
     }
