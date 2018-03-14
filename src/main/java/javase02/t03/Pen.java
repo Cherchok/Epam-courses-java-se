@@ -11,11 +11,6 @@ public class Pen extends Chancery {
         price = getPrice(getItemName());
     }
 
-
-    public void addItem() {
-        count++;
-    }
-
     @Override
     public String getItemName() {
         return "Pen";
