@@ -1,8 +1,9 @@
 package javase02.t06;
 
-import javase02.t07.BoatDiscription;
 
-@BoatDiscription(name = "Titan",model = 123986,nuclearWeapon = true)
+import javase02.t07.BoatDescription;
+
+@BoatDescription
 public class AtomicBoat {
     private Engine engine;
     private boolean oilChecked;

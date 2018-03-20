@@ -6,8 +6,7 @@ import java.lang.annotation.Target;
 
 @Documented
 @Target(ElementType.TYPE)
-public @interface BoatDiscription {
-    String name() ;
-    int model();
-    boolean nuclearWeapon() default false;
+public @interface BoatDescription {
+    String name = "Titan";
+    int model = 123878;
 }
