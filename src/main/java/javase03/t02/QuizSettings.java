@@ -14,13 +14,17 @@ public class QuizSettings {
         System.out.print("Enter language ru / en: ");
         Scanner scanner = new Scanner(System.in);
         String lang = scanner.nextLine();
-        if (lang.equals("ru")) {
-            questionsResource = ResourceBundle.getBundle("questions", new Locale("ru"));
-            answersResources = ResourceBundle.getBundle("answers", new Locale("ru"));
-        }
-        if (lang.equals("en")) {
-            questionsResource = ResourceBundle.getBundle("questions", new Locale("en"));
-            answersResources = ResourceBundle.getBundle("answers", new Locale("en"));
+        switch (lang) {
+            case "ru":
+                questionsResource = ResourceBundle.getBundle("questions", new Locale("ru"));
+                answersResources = ResourceBundle.getBundle("answers", new Locale("ru"));
+                break;
+            case "en":
+                questionsResource = ResourceBundle.getBundle("questions", new Locale("en"));
+                answersResources = ResourceBundle.getBundle("answers", new Locale("en"));
+                break;
+            default:
+                throw new UnsupportedLanguageException("Enter ru / en only");
         }
     }
 
