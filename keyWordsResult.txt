@@ -1,0 +1,7 @@
+public = 2
+double = 2
+do = 1
+class = 1
+if = 2
+int = 2
+return = 2

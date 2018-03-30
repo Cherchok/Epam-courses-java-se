@@ -4,7 +4,7 @@ public class KeyWordsCounter {
     private int count;
 
     KeyWordsCounter() {
-        count = 0;
+        count = 1;
     }
 
     public int getCount() {

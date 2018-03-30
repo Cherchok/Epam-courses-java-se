@@ -1,7 +1,10 @@
 package javase04.t01;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,8 +20,28 @@ public class JavaKeyWords {
     };
     private static Map<String, KeyWordsCounter> wordsInFile = new HashMap<>();
 
-    public void wordSplitter(File fin, File out) throws IOException {
+    @SuppressWarnings({"RegExpRedundantEscape", "ResultOfMethodCallIgnored"})
+    public static void keyWordsResult(File fin, File out) throws IOException {
+        FileInputStream fileIn = new FileInputStream(fin);
+        byte[] bytes = new byte[fileIn.available()];
+        fileIn.read(bytes);
+        fileIn.close();
+        String[] strings = (new String(bytes, Charset.forName("UTF-8"))).split("\t");
 
+        for (String string : strings) {
+            String[] word = string.replaceAll("\\/\\/", " // ").
+                    replaceAll("\\/\\*", " /* ").
+                    replaceAll("\\*\\/", " */ ").split("[\\s|\\(|=|,|\\)|;]");
+            parseWord(word);
+        }
+        StringBuilder sb = new StringBuilder(wordsInFile.size());
+        for (String key : wordsInFile.keySet()) {
+            sb.append(key).append(" = ").append(wordsInFile.get(key).getCount()).append("\n");
+        }
+        FileOutputStream fileOutputStream= new FileOutputStream(out);
+        bytes = sb.toString().getBytes();
+        fileOutputStream.write(bytes);
+        fileOutputStream.close();
     }
 
     private static void parseWord(String[] word) {
@@ -64,7 +87,6 @@ public class JavaKeyWords {
                 }
             }
         }
-
     }
 
     private static void commentsCounter(String string) {
@@ -72,9 +94,5 @@ public class JavaKeyWords {
         if (string.contains("/*")) {
             comments = 0;
         }
-
     }
-
-
-
 }
