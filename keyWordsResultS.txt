@@ -1,0 +1,8 @@
+new = 4
+import = 1
+public = 2
+double = 1
+for = 1
+class = 1
+if = 2
+int = 2
