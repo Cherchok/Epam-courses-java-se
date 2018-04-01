@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class JavaKeyWords {
     };
     private static Map<String, KeyWordsCounter> wordsInFile = new HashMap<>();
 
-    @SuppressWarnings({"RegExpRedundantEscape", "ResultOfMethodCallIgnored"})
+    @SuppressWarnings("RegExpRedundantEscape")
     public static void keyWordsResult(File fin, File out) throws IOException {
         FileInputStream fileIn = new FileInputStream(fin);
         byte[] bytes = new byte[fileIn.available()];
@@ -44,6 +45,7 @@ public class JavaKeyWords {
         fileOutputStream.close();
     }
 
+    @SuppressWarnings("Duplicates")
     private static void parseWord(String[] word) {
         for (String aWord : word) {
             if (aWord.contains("\\")) {
@@ -94,5 +96,19 @@ public class JavaKeyWords {
         if (string.contains("/*")) {
             comments = 0;
         }
+
     }
+
+    public static void main(String[] args) throws IOException {
+
+
+        File fileIn = new File("codeIn.txt");
+        System.out.println(Arrays.toString(fileIn.list()));
+
+
+        File fileOut = new File("keyWordsResult.txt");
+        JavaKeyWords.keyWordsResult(fileIn, fileOut);
+    }
+
+
 }
