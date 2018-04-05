@@ -51,7 +51,7 @@ class MoviesTest {
 
         for (String m : collection.getMovies()) {
             System.out.println(m);
-        }
+        }   
 
 
         Movies collection1 = new Movies();
