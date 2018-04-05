@@ -51,12 +51,11 @@ class FilesEditorTest {
     void editFile() throws IOException, FileDoesNotExistException {
         FilesEditor filesEditor = new FilesEditor();
         try {
-            String info = "привет ребятки";
+            String info="";
             filesEditor.editFile(path,fileName, info);
             Assert.fail("NoInfoException");
         } catch (NoInfoException e) {
             Assert.assertNotEquals("",e.getMessage());
         }
-
     }
 }
