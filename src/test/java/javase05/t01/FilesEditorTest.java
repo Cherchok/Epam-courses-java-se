@@ -1,6 +1,5 @@
 package javase05.t01;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,7 +12,7 @@ class FilesEditorTest {
     private String fileName = "file1.txt";
 
     @Test
-    void createFile()  {
+    void createFile() {
         FilesEditor fileEditor = new FilesEditor();
         assertThrows(FileAlreadyExistException.class, () -> fileEditor.createFile(path, fileName));
 
@@ -24,12 +23,7 @@ class FilesEditorTest {
     void removeFile() throws FileNotRemovedException {
         String fileName2 = "file2.txt";
         FilesEditor filesEditor = new FilesEditor();
-        try {
-            filesEditor.removeFile(path, fileName2);
-            Assert.fail("FileDoesNotExistException");
-        } catch (FileDoesNotExistException e) {
-            Assert.assertNotEquals("", e.getMessage());
-        }
+        assertThrows(FileDoesNotExistException.class, () -> filesEditor.removeFile(path, fileName2));
 
     }
 
@@ -37,25 +31,15 @@ class FilesEditorTest {
     void getFilesFromDir() {
         String path2 = "/Users/cherchok/IdeaProjects/se01/src/main/resources/m5t1/file1.txt";
         FilesEditor filesEditor = new FilesEditor();
-        try {
-            filesEditor.getFilesFromDir(path2);
-            Assert.fail("NotDirectoryException");
-        } catch (NotDirectoryException e) {
-            Assert.assertNotEquals("", e.getMessage());
-        }
+        assertThrows(NotDirectoryException.class, () -> filesEditor.getFilesFromDir(path2));
     }
 
 
     @Test
     void editFile() throws IOException, FileDoesNotExistException {
         FilesEditor filesEditor = new FilesEditor();
-        try {
-            String info = "";
-            filesEditor.editFile(path, fileName, info);
-            Assert.fail("NoInfoException");
-        } catch (NoInfoException e) {
-            Assert.assertNotEquals("", e.getMessage());
-        }
+        String info = "";
+        assertThrows(NoInfoException.class, () -> filesEditor.editFile(path, fileName, info));
 
     }
 }
