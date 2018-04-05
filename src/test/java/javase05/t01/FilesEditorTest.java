@@ -1,10 +1,7 @@
 package javase05.t01;
 
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 import java.nio.file.NotDirectoryException;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FilesEditorTest {
@@ -20,7 +17,7 @@ class FilesEditorTest {
     }
 
     @Test
-    void removeFile() throws FileNotRemovedException {
+    void removeFile() {
         String fileName2 = "file2.txt";
         FilesEditor filesEditor = new FilesEditor();
         assertThrows(FileDoesNotExistException.class, () -> filesEditor.removeFile(path, fileName2));
@@ -36,7 +33,7 @@ class FilesEditorTest {
 
 
     @Test
-    void editFile() throws IOException, FileDoesNotExistException {
+    void editFile()  {
         FilesEditor filesEditor = new FilesEditor();
         String info = "";
         assertThrows(NoInfoException.class, () -> filesEditor.editFile(path, fileName, info));
