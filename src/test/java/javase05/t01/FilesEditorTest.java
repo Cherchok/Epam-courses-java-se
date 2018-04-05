@@ -2,22 +2,21 @@ package javase05.t01;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.nio.file.NotDirectoryException;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FilesEditorTest {
     private String path = "/Users/cherchok/IdeaProjects/se01/src/main/resources/m5t1/";
     private String fileName = "file1.txt";
 
     @Test
-    void createFile() throws IOException, FileNotCreatedException {
+    void createFile()  {
         FilesEditor fileEditor = new FilesEditor();
-        try {
-            fileEditor.createFile(path, fileName);
-            Assert.fail("FileAlreadyExistException");
-        } catch (FileAlreadyExistException e) {
-            Assert.assertNotEquals("", e.getMessage());
-        }
+        assertThrows(FileAlreadyExistException.class, () -> fileEditor.createFile(path, fileName));
+
 
     }
 
@@ -51,11 +50,12 @@ class FilesEditorTest {
     void editFile() throws IOException, FileDoesNotExistException {
         FilesEditor filesEditor = new FilesEditor();
         try {
-            String info="";
-            filesEditor.editFile(path,fileName, info);
+            String info = "";
+            filesEditor.editFile(path, fileName, info);
             Assert.fail("NoInfoException");
         } catch (NoInfoException e) {
-            Assert.assertNotEquals("",e.getMessage());
+            Assert.assertNotEquals("", e.getMessage());
         }
+
     }
 }
