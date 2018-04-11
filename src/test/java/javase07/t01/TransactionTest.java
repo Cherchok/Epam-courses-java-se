@@ -29,8 +29,8 @@ class TransactionTest {
             Thread thread = new Thread(new Transaction(accounts.get(strings[0]), accounts.get(strings[1]),
                     Integer.parseInt(strings[2])));
             thread.start();
+            thread.join();
         }
-        Thread.sleep(1000);
         assertEquals(300, accounts.get("2").getAccountBalance());
 
 
