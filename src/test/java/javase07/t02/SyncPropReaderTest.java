@@ -1,6 +1,6 @@
 package javase07.t02;
 
-import javase07.t02.SyncPropReader;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
