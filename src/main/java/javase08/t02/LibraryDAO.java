@@ -13,7 +13,8 @@ public class LibraryDAO {
     }
 
     public void addBook(Book book) {
-        sql = "INSERT INTO Module8DB.library (book_title, author) VALUES (?,?)";
+        sql = "INSERT INTO Module8DB.library (book_title, author) " +
+                "VALUES (" + "'" + book.getTitle() + "'" + "," + "'" + book.getAuthor() + "'" + ")";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, book.getTitle());
             ps.setString(2, book.getAuthor());

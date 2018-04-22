@@ -5,8 +5,13 @@ public class Book {
     private String title;
     private String author;
 
-    public Book(int anInt, String title, String author) {
-        this.id=anInt;
+    public Book(int id, String title, String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
+
+    public Book(String title, String author) {
         this.title = title;
         this.author = author;
     }
