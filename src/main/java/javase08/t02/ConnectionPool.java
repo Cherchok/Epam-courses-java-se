@@ -1,8 +1,12 @@
 package javase08.t02;
 
 import java.sql.*;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
 
 public class ConnectionPool {
     private String driver;
@@ -14,14 +18,20 @@ public class ConnectionPool {
     private BlockingQueue<Connection> usedConnections;
 
     public ConnectionPool() {
-        this.driver = ResourceManager.getValues(ResourceManager.DRIVER);
-        this.url = ResourceManager.getValues(ResourceManager.URL);
-        this.user = ResourceManager.getValues(ResourceManager.USER);
-        this.password = ResourceManager.getValues(ResourceManager.PASSWORD);
-        this.poolSize = Integer.parseInt(ResourceManager.getValues(ResourceManager.POOLSIZE));
+        ResourceManager resourceManager = ResourceManager.getInstance();
+        this.driver = resourceManager.getValues(DBParameter.DRIVER);
+        this.url = resourceManager.getValues(DBParameter.URL);
+        this.user = resourceManager.getValues(DBParameter.USER);
+        this.password = resourceManager.getValues(DBParameter.PASSWORD);
+        try {
+            this.poolSize = Integer.parseInt(resourceManager.getValues(DBParameter.POOLSIZE));
+        } catch (NumberFormatException e) {
+            poolSize = 5;
+        }
     }
 
     public void initPool() {
+        Locale.setDefault(Locale.ENGLISH);
         try {
             Class.forName(driver);
             connectionPool = new ArrayBlockingQueue<>(poolSize);
@@ -46,6 +56,8 @@ public class ConnectionPool {
         }
         return connection;
     }
+
+
 
     public void returnConnection(Connection connection) {
         usedConnections.remove(connection);
@@ -80,5 +92,4 @@ public class ConnectionPool {
             e.printStackTrace();
         }
     }
-
 }

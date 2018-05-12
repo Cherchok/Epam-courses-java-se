@@ -33,7 +33,7 @@ class ConcurTransactionTest {
                     Integer.parseInt(strings[2])));
 
         }
-       // Thread.sleep(100);
+        Thread.sleep(100);
         assertEquals(300, accounts.get("2").getAccountBalance());
     }
 }
