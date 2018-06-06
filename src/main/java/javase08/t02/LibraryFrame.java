@@ -36,7 +36,7 @@ public class LibraryFrame extends JFrame {
         table.setFont(font);
         table.setRowHeight(30);
 
-        //        JLabel idLabel = new JLabel("id:");
+
         JLabel titleLabel = new JLabel("book title:");
         JLabel authorLabel = new JLabel("last name:");
 

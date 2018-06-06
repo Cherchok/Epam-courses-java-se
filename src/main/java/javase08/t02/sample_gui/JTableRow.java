@@ -1,4 +1,4 @@
-package javase08.t02.sample;
+package javase08.t02.sample_gui;
 
 import java.awt.Color;
 import java.awt.Font;

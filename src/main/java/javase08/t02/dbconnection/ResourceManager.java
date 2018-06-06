@@ -1,4 +1,4 @@
-package javase08.t02;
+package javase08.t02.dbconnection;
 
 import java.util.ResourceBundle;
 

@@ -1,6 +1,6 @@
 package javase08.t02.pool;
 
-import javase08.t02.ResourceManager;
+import javase08.t02.dbconnection.ResourceManager;
 import lombok.SneakyThrows;
 
 import java.sql.Connection;
