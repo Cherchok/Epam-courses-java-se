@@ -1,31 +1,30 @@
 package javase08.t02;
 
+import javase08.t02.dao.LibraryDao;
+import javase08.t02.dao.LibraryDaoImpl;
+import javase08.t02.pool.ConnectionPoolImpl;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
-import java.util.List;
 
 class ConnectionPoolTest {
     private Connection connection;
-    private LibraryDAO libraryDAO;
-    private ConnectionPool connectionPool;
+    private LibraryDao libraryDAO;
+    private ConnectionPoolImpl connectionPool;
 
-    @Before
-    public void setup() {
-        connectionPool = new ConnectionPool();
-        connectionPool.initPool();
-        connection = connectionPool.getConnection();
-        libraryDAO = new LibraryDAO(connection);
-    }
-
-    @After
-    public void close() {
-        connectionPool.returnConnection(connection);
-        connectionPool.closeConnections();
-    }
+//    @Before
+//    public void setup() {
+//        connectionPool = new ConnectionPoolImpl();
+//        libraryDAO = new LibraryDaoImpl(connectionPool);
+//    }
+//
+//    @After
+//    public void close() {
+//        connectionPool.returnConnection(connection);
+//        connectionPool.closeConnections();
+//    }
 
 //    @Test
 //    void addBook() {
@@ -50,11 +49,5 @@ class ConnectionPoolTest {
 //        }
 //    }
 
-    @Test
-    void closeResultSet() {
-    }
 
-    @Test
-    void closeStatement() {
-    }
 }
